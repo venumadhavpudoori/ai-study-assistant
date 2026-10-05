@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "question": "What is the main objective of the study?",
+    "expected_answer": "The main objective is to analyze the impact of environmental factors on urban biodiversity.",
+    "gold_chunk_ids": [1, 2],
+    "category": "factual"
+  },
+  {
+    "id": 2,
+    "question": "Which methodology was used for data collection?",
+    "expected_answer": "The study used a combination of field surveys and satellite imagery analysis.",
+    "gold_chunk_ids": [15, 16],
+    "category": "factual"
+  },
+  {
+    "id": 3,
+    "question": "What were the primary conclusions regarding urban green spaces?",
+    "expected_answer": "Urban green spaces significantly increase the presence of native pollinators.",
+    "gold_chunk_ids": [42, 43, 45],
+    "category": "summary"
+  }
+]

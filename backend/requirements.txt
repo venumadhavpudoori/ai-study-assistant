@@ -1,0 +1,17 @@
+fastapi
+uvicorn[standard]
+sqlalchemy[asyncio]
+alembic
+asyncpg
+pydantic-settings
+pgvector
+passlib[argon2]
+python-jose[cryptography]
+python-multipart
+slowapi
+pymupdf
+python-magic
+tiktoken
+openai
+pytest
+pytest-asyncio

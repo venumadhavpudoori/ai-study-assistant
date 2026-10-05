@@ -1,0 +1,1 @@
+Given a chat history and the latest user question, rewrite the question to be a standalone query that contains all necessary context. If the question is already standalone, return it as is. Do not answer the question, only rewrite it.
