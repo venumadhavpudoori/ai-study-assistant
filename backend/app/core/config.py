@@ -32,10 +32,11 @@ class Settings(BaseSettings):
     GROQ_BASE_URL: str = "https://api.groq.com/openai/v1"
     GROQ_MODEL: str = "openai/gpt-oss-120b"
     OPENAI_API_KEY: Optional[str] = None
+    OPENAI_MODEL: str = "gpt-4o-mini"
 
     # Retrieval settings
     RETRIEVAL_TOP_K: int = 5
-    RETRIEVAL_THRESHOLD: float = 0.7
+    RETRIEVAL_THRESHOLD: float = 0.15
 
     POSTGRES_USER: Optional[str] = None
     POSTGRES_PASSWORD: Optional[str] = None

@@ -55,10 +55,10 @@ async def test_retrieve_relevant_chunks_threshold(mock_db, mock_embedding_servic
     mock_embedding_service.embed_texts.return_value = [[0.1] * 1536]
 
     # Mock DB result with a high distance (low similarity)
-    # distance 0.5 -> similarity 0.5 < threshold 0.7
+    # distance 0.9 -> similarity 0.1 < threshold 0.15
     mock_row = (
         DocumentChunk(id=1, content="Irrelevant text", page_number=1, document_id=10, embedding=[0.5]*1536),
-        0.5
+        0.9
     )
     mock_db.execute.return_value.all.return_value = [mock_row]
 

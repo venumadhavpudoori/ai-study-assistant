@@ -15,5 +15,5 @@ def validate_citations(response_text: str, retrieved_chunk_count: int) -> str:
         except ValueError:
             return ""
 
-    # Match [n] where n is a digit
-    return re.sub(r"\[(\d+)\]", replace_citation, response_text)
+    # Match [n] or [n:L...] where n is a digit
+    return re.sub(r"\[(\d+)(?::[^\]]*)?\]", replace_citation, response_text)

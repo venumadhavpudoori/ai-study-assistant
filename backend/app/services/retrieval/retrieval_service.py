@@ -77,8 +77,14 @@ async def retrieve_relevant_chunks(
         scored.sort(key=lambda x: x[1])
         rows = scored[:k]
 
+    import logging
+    logger = logging.getLogger(__name__)
+
     if not rows:
         return []
+
+    best_sim = 1.0 - float(rows[0][1]) if rows else 0.0
+    logger.info(f"Vector search for '{query_text[:30]}...': {len(rows)} candidates found. Best similarity: {best_sim:.3f} (threshold: {t})")
 
     # 3. Calculate similarity and filter by threshold
     results = []

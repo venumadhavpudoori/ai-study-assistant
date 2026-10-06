@@ -8,7 +8,7 @@ from app.services.llm import llm_service
 from app.services.rag.prompt_service import prompt_service
 from app.services.rag.validation import validate_citations
 from app.services.rag.rewrite_service import rewrite_query
-from app.models.base import Message, MessageSource
+from app.models.base import Message, MessageSource, Document, DocumentStatus
 
 logger = logging.getLogger(__name__)
 
@@ -36,6 +36,15 @@ async def generate_rag_answer(
 
         # 3. Threshold Check
         if not chunks:
+            # Check if there are any READY documents in this workspace
+            doc_stmt = select(Document).where(
+                Document.workspace_id == workspace_id,
+                Document.status == DocumentStatus.READY
+            )
+            ready_docs = (await db.execute(doc_stmt)).scalars().all()
+            if not ready_docs:
+                return "No processed documents were found in this workspace. Please ensure your uploaded documents have finished processing and show 'READY' status.", []
+
             return "I couldn't find enough information in your uploaded materials", []
 
         # 4. Build Prompt
